@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | WA STEEL WORKS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">WA STEEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <h2 class="section-title ">Our Products</h2>
+
+            <!-- Filters -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                        <button class="btn btn-welding-search cnc-cut" type="button" id="searchBtn">Search</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="gates">Gates</option>
+                        <option value="windows">Windows</option>
+\                        <option value="staircases">Staircases</option>
+                        <option value="doors">Doors</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row" id="productsGrid">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="steel-brand"> WA STEEL</h4>
+                    <p>Professional welding solutions for residential and commercial projects. Quality and precision in
+                        every weld.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Rhemat Market near Gate # 5 IEP Town, Lahore</p>
+                    <p><i class="fas fa-phone me-2"></i> +(92)301-4175992</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@wasteelworks.com</p>
+                    <p><i class="fas fa-clock me-2"></i> Mon-Fri: 8AM-7PM, Sun: closed</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none text-light">Home</a></li>
+                        <li><a href="products.html" class="text-decoration-none text-light">Products</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-light">About Us</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-light">Contact</a></li>
+                        <li><a href="#" class="text-decoration-none text-light">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 WA STEEL WORKS. All rights reserved. | created by WAsteel</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Elements for Sound Effects -->
+    <audio id="hoverSound" preload="auto">
+        <source src="sounds/hover.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clickSound" preload="auto">
+        <source src="sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sparkSound" preload="auto">
+        <source src="sounds/spark.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="steelSound" preload="auto">
+        <source src="sounds/steel.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Product data
+        const products = [
+            // Gates (1–12)
+            { id: 1, name: " Gate", category: "gates", image: "gates/gate1.jpg" },
+            { id: 2, name: " Gate", category: "gates", image: "gates/gate2.jpg" },
+            { id: 3, name: " Gate", category: "gates", image: "gates/gate3.jpg" },
+            { id: 4, name: " Gate", category: "gates", image: "gates/gate4.jpg" },
+            { id: 5, name: " Gate", category: "gates", image: "gates/gate5.jpg" },
+            { id: 6, name: " Gate", category: "gates", image: "gates/gate6.jpg" },
+            { id: 7, name: " Gate", category: "gates", image: "gates/gate7.jpg" },
+            { id: 8, name: " Gate", category: "gates", image: "gates/gate8.jpg" },
+            { id: 9, name: " Gate", category: "gates", image: "gates/gate9.jpg" },
+            { id: 10, name: " Gate", category: "gates", image: "gates/gate10.jpg" },
+            { id: 11, name: " Gate", category: "gates", image: "gates/gate11.jpg" },
+            { id: 12, name: " Gate", category: "gates", image: "gates/gate12.jpg" },
+            { id: 13, name: " Gate", category: "gates", image: "gates/gate13.jpg" },
+            { id: 14, name: " Gate", category: "gates", image: "gates/gate14.jpg" },
+            { id: 15, name: " Gate", category: "gates", image: "gates/gate15.jpg" },
+            { id: 16, name: " Gate", category: "gates", image: "gates/gate16.jpg" },
+            { id: 17, name: " Gate", category: "gates", image: "gates/gate17.jpg" },
+            { id: 18, name: " Gate", category: "gates", image: "gates/gate18.jpg" },
+            { id: 19, name: " Gate", category: "gates", image: "gates/gate19.jpg" },
+            { id: 20, name: " Gate", category: "gates", image: "gates/gate20.jpg" },
+            { id: 21, name: " Gate", category: "gates", image: "gates/gate21.jpg" },
+
+            // Windows (22–33)
+
+            { id: 22, name: " Window", category: "windows", image: "windows/window1.jpg" },
+            { id: 23, name: " Window", category: "windows", image: "windows/window2.jpg" },
+            { id: 24, name: " Window", category: "windows", image: "windows/window3.jpg" },
+            { id: 25, name: " Window", category: "windows", image: "windows/window4.jpg" },
+            { id: 26, name: " Window", category: "windows", image: "windows/window5.jpg" },
+            { id: 27, name: " Window", category: "windows", image: "windows/window6.jpg" },
+            { id: 28, name: " Window", category: "windows", image: "windows/window7.jpg" },
+            { id: 29, name: " Window", category: "windows", image: "windows/window8.jpg" },
+            { id: 30, name: " Window", category: "windows", image: "windows/window9.jpg" },
+            { id: 31, name: " Window", category: "windows", image: "windows/window10.jpg" },
+            { id: 32, name: " Window", category: "windows", image: "windows/window11.jpg" },
+            { id: 33, name: " Window", category: "windows", image: "windows/window12.jpg" },
+
+         
+
+
+
+            // Staircases (49–60)
+            { id: 56, name: "Staircases", category: "staircases", image: "staircases/stair1.jpg" },
+            { id: 57, name: "Staircases", category: "staircases", image: "staircases/stair2.jpg" },
+            { id: 58, name: "Staircases", category: "staircases", image: "staircases/stair3.jpg" },
+            { id: 59, name: "Stairs", category: "staircases", image: "staircases/stair4.jpg" },
+            { id: 60, name: " stairs", category: "staircases", image: "staircases/stair5.jpg" },
+            { id: 61, name: "Stairs", category: "staircases", image: "staircases/stair6.jpg" },
+            { id: 62, name: " Staircase", category: "staircases", image: "staircases/stair7.jpg" },
+            { id: 63, name: " Staircase", category: "staircases", image: "staircases/stair8.jpg" },
+            { id: 64, name: " Stairs", category: "staircases", image: "staircases/stair9.jpg" },
+            { id: 65, name: " Staircase", category: "staircases", image: "staircases/stair10.jpg" },
+            { id: 66, name: " Staircase", category: "staircases", image: "staircases/stair11.jpg" },
+            { id: 67, name: " Staircase", category: "staircases", image: "staircases/stair12.jpg" },
+                 { id: 68, name: "Stairs", category: "staircases", image: "staircases/stair13.jpg" },
+            { id: 69, name: " Staircase", category: "staircases", image: "staircases/stair14.jpg" },
+            { id: 70, name: " Staircase", category: "staircases", image: "staircases/stair15.jpg" },
+            { id: 71, name: " Stairs", category: "staircases", image: "staircases/stair16.jpg" },
+            { id: 72, name: " Staircase", category: "staircases", image: "staircases/stair17.jpg" },
+            { id: 73, name: " Staircase", category: "staircases", image: "staircases/stair18.jpg" },
+
+
+            // Doors (61–72)
+            { id: 74, name: "Doors", category: "doors", image: "doors/door1.jpg" },
+            { id: 75, name: "Doors", category: "doors", image: "doors/door2.jpg" },
+            { id: 76, name: "Door", category: "doors", image: "doors/door3.jpg" },
+            { id: 77, name: "Door", category: "doors", image: "doors/door4.jpg" },
+            { id: 78, name: "Door", category: "doors", image: "doors/door5.jpg" },
+            { id: 79, name: "Door", category: "doors", image: "doors/door6.jpg" },
+            { id: 80, name: "Door", category: "doors", image: "doors/door7.jpg" },
+            { id: 81, name: "Door", category: "doors", image: "doors/door8.jpg" },
+            { id: 82, name: "Door", category: "doors", image: "doors/door9.jpg" },
+         
+
+           
+            
+        ];
+
+
+
+        // Load products
+        function loadProducts(filter = "all", search = "") {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+
+            const filteredProducts = products.filter(product => {
+                const categoryMatch = filter === "all" || product.category === filter;
+                const searchMatch = product.name.toLowerCase().includes(search.toLowerCase());
+                return categoryMatch && searchMatch;
+            });
+
+            if (filteredProducts.length === 0) {
+                productsGrid.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-search fa-3x mb-3" style="color: var(--accent);"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search or filter criteria</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredProducts.forEach(product => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 col-xl-3 mb-4';
+
+                col.innerHTML = `
+                    <div class="product-card cnc-cut">
+                       <div class="product-img" style="background-image: url('${product.image ? product.image : ''}'); background-size: cover; background-position: center;">
+    ${product.icon ? `<i class="${product.icon}"></i>` : ''}
+</div>
+
+                        <div class="product-info">
+                            <h5>${product.name}</h5>
+                            <p>High-quality ${product.category} with custom design options.</p>
+                        </div>
+                        <div class="product-overlay">
+                            <h5>${product.name}</h5>
+                            <a href="https://wa.me/+923014175992?text=I'm interested in ${encodeURIComponent(product.name)}" target="_blank" class="btn btn-whatsapp mt-3 cnc-cut product-inquiry">
+                                <i class="fab fa-whatsapp me-2"></i> Inquire Now
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                productsGrid.appendChild(col);
+            });
+
+            // Add event listeners to new product inquiry buttons
+            document.querySelectorAll('.product-inquiry').forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    document.getElementById('hoverSound').play();
+                });
+            });
+
+            // Add hover sound to product cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    document.getElementById('hoverSound').play();
+                });
+            });
+        }
+
+        // Initialize products
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProducts();
+
+            // Category filter
+            document.getElementById('categoryFilter').addEventListener('change', function () {
+                const searchValue = document.getElementById('searchInput').value;
+                loadProducts(this.value, searchValue);
+                document.getElementById('clickSound').play();
+            });
+
+            // Search filter
+            document.getElementById('searchInput').addEventListener('input', function () {
+                const categoryValue = document.getElementById('categoryFilter').value;
+                loadProducts(categoryValue, this.value);
+            });
+
+            document.getElementById('searchBtn').addEventListener('click', function () {
+                const categoryValue = document.getElementById('categoryFilter').value;
+                const searchValue = document.getElementById('searchInput').value;
+                loadProducts(categoryValue, searchValue);
+                document.getElementById('clickSound').play();
+            });
+        });
+    </script>
+</body>
+
+</html>
